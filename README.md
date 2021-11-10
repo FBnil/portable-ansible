@@ -2,26 +2,29 @@
 
 Ansible package with required python modules. No need to install, just download, unpack and use. The main idea of this package is to run Ansible playbooks on local machine
 
+This is a BRANCH! For the original Repository head over to https://github.com/ownport/portable-ansible
+
+However, this BRANCH still has Python2 support for Ansible 2.9.27 (release 2021-10-11) for people that still can not go to python3.
 
 
 ## Included in the distribution
 
-Version: 0.4.0
+Version: 0.4.3
 
-| Package  | Version |
-| -------- | ------- |
-| ansible  | 2.9.2   |
-| jinja2   | 2.10.3  |
-| PyYAML   | 5.2     |
-| paramiko | 2.7.1   |
-| six      | 1.13.0  |
-| cryptography | 2.8 |
-| pyasn1   | 0.4.8   |
-| asn1crypto | 1.2.0 |
-| bcrypt   | 3.1.7   |
-| cffi     | 1.13.2  |
-| PyNaCl   | 1.3.0   |
-| markupsafe | 1.1.1 |
+| Package    | Version |
+| --------   | ------- |
+| ansible    | 2.9.27  |
+| jinja2     | 2.11.3  |
+| PyYAML     | 5.4.1   |
+| paramiko   | 2.8.0   |
+| six        | 1.13.0  |
+| cryptography | 3.3.2 |
+| pyasn1     | 0.4.8   |
+| asn1crypto | 1.4.0   |
+| bcrypt     | 3.1.7   |
+| cffi       | 1.15.0  |
+| PyNaCl     | 1.4.0   |
+| markupsafe | 1.1.1   |
 
 ## How to install and use
 
@@ -29,7 +32,7 @@ You just need to download latest version of portable-ansible tarball (.tar.bz2) 
 Releases page https://github.com/ownport/portable-ansible/releases and unpack the files
 
 ```sh
-$ wget https://github.com/ownport/portable-ansible/releases/download/v0.3.0/portable-ansible-v0.3.0-py2.tar.bz2 -O ansible.tar.bz2
+$ wget https://github.com/ownport/portable-ansible/releases/download/v0.4.3/portable-ansible-v0.4.3-py2.tar.bz2 -O ansible.tar.bz2
 $ tar -xjf ansible.tar.bz2
 $ python ansible localhost -m ping
  [WARNING]: provided hosts list is empty, only localhost is available
