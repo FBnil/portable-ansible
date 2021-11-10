@@ -54,10 +54,6 @@ $ python ansible-playbook playbook.yml
 In the same fashion, to have all the ansible commands, run:
 ```
 for l in config console doc galaxy inventory playbook pull vault;do
-  ln -s ansible ansible-$l
-done
-
-for l in config console doc galaxy inventory playbook pull vault;do
   if [ ! -L "ansible-$l" ];then
           ln -s ansible ansible-$l
   fi
@@ -70,8 +66,10 @@ done
 and now you can create a role like this:
 ```sh
 $ cd roles
-$ ansible galaxy init mynewrole
+$ ansible-galaxy init mynewrole
 ```
+and the cowsay is gone (can be enabled back in your ansible.cfg)
+
 
 ## Supporting additional python packages
 
