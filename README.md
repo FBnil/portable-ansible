@@ -59,8 +59,17 @@ for l in config console doc galaxy inventory playbook pull vault;do
   fi
   alias ansible-$l="ANSIBLE_CONFIG=$PWD/ansible.cfg python $PWD/ansible-$l"
 done
-  alias ansible="ANSIBLE_CONFIG=$PWD/ansible.cfg python $PWD/ansible"
+alias ansible="ANSIBLE_CONFIG=$PWD/ansible.cfg python $PWD/ansible"
+```
 
+TIP: Put the content in a file and source the file each session to have your environment:
+
+```
+MYPATH=/home/a/path/to/your/installation/
+for l in config console doc galaxy inventory playbook pull vault;do
+  alias ansible-$l="ANSIBLE_CONFIG=$MYPATH/ansible.cfg python $MYPATH/ansible-$l"
+done
+alias ansible="ANSIBLE_CONFIG=$MYPATH/ansible.cfg python $MYPATH/ansible"
 ```
 
 and now you can create a role like this:
@@ -69,6 +78,28 @@ $ cd roles
 $ ansible-galaxy init mynewrole
 ```
 and the cowsay is gone (can be enabled back in your ansible.cfg)
+
+
+Note that The last cryptography file that supports Python 2.7 contains an obnoxious warning block that can be removed with this playbook:
+
+```
+---
+- name: Remove pesky warning about deprecated Python2 in cryptography
+  hosts: localhost
+  tasks:
+
+    - name: "wipe code from python file"
+      replace:
+        regexp: 'if sys.version_info[\s\S]*(\s*warnings.warn\([\s\S]*\))'
+        #regexp: 'warnings.warn'
+        replace: ''
+        path: "./ansible/cryptography/__init__.py"
+    - name: "Remove compiled pyc file"
+      file:
+        path: "./ansible/cryptography/__init__.pyc"
+        state: absent
+      ignore_errors: yes
+```
 
 
 ## Supporting additional python packages
